@@ -34,15 +34,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Broken Web Map</title>
-    
+
     <!-- Leaflet CSS stylesheet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     
     <!-- start of our CSS styles -->
     <style>
         h1 {
-            color: white;
-        }
+            color: rgb(19, 17, 17);  (/* header was the color as background, changed header color from white to black*/) }
         .map {
             border: 4px solid red;
         }
@@ -54,12 +53,18 @@
         <h1>A Working Web Map</h1>
     </div>
     
-    <div id="map" style="width: 600px; height: 400px;"></div>
+    <div   id="map" style="width: 600px; height: 400px;"></div>
     
     <!-- start of our JavaScript code -->
-    <script>
+    <!-- Leaflet JavaScript library -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script> 
+
+    <!-- L not defined, found in console tab, moved leaflet import above map initialization-->
+
+    <script >
+        
         // Initialize the map
-        let map = L.map('mapElement')
+        let map = L.map('map')
         // Center the map on UMD campus, and set the zoom level
         map.setView([-92.08, 46.82], 15);
         
@@ -70,7 +75,7 @@
         }).addTo(map);
     </script>
         
-    <!-- Leaflet JavaScript library -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    
 </body>
 </html>
