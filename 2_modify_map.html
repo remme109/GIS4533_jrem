@@ -58,14 +58,17 @@
         // add tiles to the map
         tiles.addTo(map);
 
-        // add marker at Hartley Nature Center
-        const hartleyMarker = L.marker([46.835, -92.089]).addTo(map);
-        hartleyMarker.bindPopup("<b>Hartley Nature Center</b><br>A great place to hike and see wildlife!").openPopup();
+        // add marker at lester park
+        const lesterMarker = L.marker([46.837, -92.019]).addTo(map);
+        lesterMarker.bindPopup("<b>Lester park</b><br>A great place to drive through the trees!").openPopup();
 
 
-        // Add a marker for the UMD campus
-        const marker = L.marker([46.82, -92.085]).addTo(map);
-        marker.bindPopup("<b>University of Minnesota Duluth</b><br>A great place to learn about GIS!").openPopup();
+        // Add a marker for the DTA
+        const DTA = L.marker([46.7630, -92.13]).addTo(map);
+        DTA.bindPopup("<b>Duluth Transit Authority</b><br>An easy way to get downtown!").openPopup();
+
+        const myHouse = L.marker([46.8184, -92.115822]).addTo(map);
+        myHouse.bindPopup("<b>My house</b><br>so cozy!").openPopup();
     </script>
 </body>
 </html>
