@@ -31,16 +31,31 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     
     <style>
+        body{
+            background-color: grey;
+            
+        }
+        h1, h3, p{
+            color: rgb(129, 201, 196);
+            font-family: 'Times New Roman'
 
-        /* full page leaflet map */
+        }
+        map {
+            border-style: solid;
+            border-color:aqua;
+            border-width: 4px;
+            
+        }
+    
         
     </style>
 </head>
 <body>
     <!-- Header at the top of the page -->
     <div class="header">
-        <h1>A Mostly Basic Web Map</h1>
-        <h3>by: Your Name Here</h3>
+        <h1>My most often traveled paths</h1>
+        <h3>by: Julian Remmes</h3>
+        <p>These are the places in Duluth where I enjoy spending most of my time</p>
     </div>
     <div id="map" style="width: 600px; height: 400px;"></div>
     
@@ -48,12 +63,12 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     
     <script>
-        // Initialize the map, center it on UMD campus, and set the zoom level
-        const map = L.map('map').setView([46.82, -92.08], 13);
+        // Initialize the map, center it on 2nd and 21st
+        const map = L.map('map').setView([46.7758, -92.1197], 11);
 
         // Add Esri Satellite tiles
         const tiles = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+            attribution: 'Tiles &copy; Openstreetmap; Source: Openstreetmap, its many contributers, and Leaflet'
         });
         // add tiles to the map
         tiles.addTo(map);
