@@ -40,9 +40,9 @@
             font-family: 'Times New Roman'
 
         }
-        .map
-        {
-            
+        #map
+        { position: absolute; top: 5; bottom: 5; left: 50; right: 50;
+        border: 4PX solid aqua
             
         }
     
@@ -76,7 +76,6 @@
         // add marker at lester park
         const lesterMarker = L.marker([46.837, -92.019]).addTo(map);
         lesterMarker.bindPopup("<b>Lester park</b><br>A great place to drive through the trees!").openPopup();
-
 
         // Add a marker for the DTA
         const DTA = L.marker([46.7630, -92.13]).addTo(map);
