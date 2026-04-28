@@ -29,19 +29,20 @@
     
 
     </style>
+    
 </head>
 <body>
     <div class="header">
         <h1>Welcome to Duluth!</h1>
-        <h2>Here is a list of fun things to do while you are visiting for the WDF conference</h2>
-        <p>Click on each location to learn more about attractions in Duluth</p>
+        <h2>There are lots of fun things to do while you are visiting for the WDF conference</h2>
+        <p>Zoom in and click on each location to learn more about attractions in Duluth</p>
     </div>
 
     <div id="map" style="width: 1300px; height: 550px;"></div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script>
-    const map = L.map('map').setView([46.7845, -92.1055], 11);
+    const map = L.map('map').setView([46.7491, -92.1012], 10);
 
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/" target="_blank">Humanitarian OpenStreetMap Team</a> hosted by <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>'
@@ -50,34 +51,108 @@
 
         tiles.addTo(map);
 
-        const canalPark = L.marker([46.78, -92.09]).addTo(map);
+        var bridgeIcon = L.icon({
+        iconUrl: './map_icons/bridge icon.png',
+        iconSize:     [40, 70], 
+        iconAnchor:   [22, 94], 
+        popupAnchor:  [-3, -76] });
+        // source:<a href="https://www.flaticon.com/free-icons/bridge" title="bridge icons">Bridge icons created by Freepik - Flaticon</a>
+
+        var boatIcon = L.icon({
+        iconUrl: './map_icons/boat.png',
+        iconSize:     [40, 40], 
+        iconAnchor:   [22, 94], 
+        popupAnchor:  [-3, -76] });
+        // source:<a href="https://www.flaticon.com/free-icons/boats" title="boats icons">Boats icons created by Freepik - Flaticon</a>
+
+        var towerIcon = L.icon({
+        iconUrl: './map_icons/castle-tower.png',
+        iconSize:     [40, 40], 
+        iconAnchor:   [22, 94], 
+        popupAnchor:  [-3, -76] });
+        // source:<a href="https://www.flaticon.com/free-icons/castle-tower" title="castle tower icons">Castle tower icons created by tulpahn - Flaticon</a>
+
+        var trainIcon = L.icon({
+        iconUrl: './map_icons/toy-train.png',
+        iconSize:     [40, 40], 
+        iconAnchor:   [22, 94], 
+        popupAnchor:  [-3, -76] });
+        // source:<a href="https://www.flaticon.com/free-icons/train" title="train icons">Train icons created by Freepik - Flaticon</a>
+
+        var fishIcon = L.icon({
+        iconUrl: './map_icons/fish.png',
+        iconSize:     [40, 40], 
+        iconAnchor:   [22, 94], 
+        popupAnchor:  [-3, -76] });
+        // source:<a href="https://www.flaticon.com/free-icons/fish" title="fish icons">Fish icons created by ultimatearm - Flaticon</a>
+
+        var mansionIcon = L.icon({
+        iconUrl: './map_icons/villa.png',
+        iconSize:     [40, 40], 
+        iconAnchor:   [22, 94], 
+        popupAnchor:  [-3, -76] });
+        // source:<a href="https://www.flaticon.com/free-icons/villa" title="villa icons">Villa icons created by 3ab2ou - Flaticon</a>
+
+        var skiIcon = L.icon({
+        iconUrl: './map_icons/ski-resort.png',
+        iconSize:     [40, 40], 
+        iconAnchor:   [22, 94], 
+        popupAnchor:  [-3, -76] });
+        // source:<a href="https://www.flaticon.com/free-icons/ski-resort" title="ski resort icons">Ski resort icons created by Freepik - Flaticon</a>
+
+        var jayCookeIcon = L.icon({
+        iconUrl: './map_icons/stone.png',
+        iconSize:     [40, 40], 
+        iconAnchor:   [22, 94], 
+        popupAnchor:  [-3, -76] });
+        // source: <a href="https://www.flaticon.com/free-icons/rock" title="rock icons">Rock icons created by Freepik - Flaticon</a>
+
+        var lesterIcon = L.icon({
+        iconUrl: './map_icons/trees.png',
+        iconSize:     [40, 40], 
+        iconAnchor:   [22, 94], 
+        popupAnchor:  [-3, -76] });
+        //source: <a href="https://www.flaticon.com/free-icons/trees" title="trees icons">Trees icons created by Freepik - Flaticon</a>
+
+        var chesterIcon = L.icon({
+        iconUrl: './map_icons/waterfall.png',
+        iconSize:     [40, 40], 
+        iconAnchor:   [22, 94], 
+        popupAnchor:  [-3, -76] });
+        // source:<a href="https://www.flaticon.com/free-icons/waterfall" title="waterfall icons">Waterfall icons created by Nuricon - Flaticon</a>
+
+
+
+
+  
+        const canalPark = L.marker([46.78, -92.09], {icon: boatIcon}).addTo(map);
         canalPark.bindPopup('<b>Canal Park</b><br>Canal Park is a tourist and recreation-oriented district of Duluth, Minnesota, United States. Situated across the Interstate 35 freeway from Downtown Duluth, it is connected by the famous Aerial Lift Bridge to the Park Point sandbar and neighborhood.<br> <br> <img src= "https://miro.medium.com/1*bX-xl4ejzLDUqYSqz_gruw.jpeg" style="width:100%; height:200px; border: 3px solid darkolivegreen;">').openPopup();
 
-        const aerialLiftBridge = L.marker([46.7789, -92.0929]).addTo(map);
+        const aerialLiftBridge = L.marker([46.7789, -92.0929], {icon: bridgeIcon}).addTo(map);
         aerialLiftBridge.bindPopup('<b>Aerial Lift Bridge</b><br>The Aerial Lift Bridge is a landmark in the port city of Duluth, Minnesota. The span began life in 1905 as the United States first transporter bridge. In 1929–30, the span was converted to a vertical lift bridge, and continues to operate today.<br><br><img src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHYanJXoHL32Xfe27BY_9tcKxumuqaDcgDqw&s" style="width:100%; height:200px; border: 3px solid darkolivegreen;">').openPopup();
 
-        const spiritMountain = L.marker([46.7194, -92.2181]).addTo(map);
+        const spiritMountain = L.marker([46.7194, -92.2181], {icon: skiIcon}).addTo(map);
         spiritMountain.bindPopup('<b>Spirit Mountain</b><br>Recreational mountain featuring wintertime downhill skiing & a summertime adventure park.<br><br><img src= "https://cdn.forumcomm.com/dims4/default/72eefac/2147483647/strip/true/crop/4860x3240+162+0/resize/840x560!/quality/90/?url=https%3A%2F%2Ffcc-cue-exports-brightspot.s3.us-west-2.amazonaws.com%2Fduluthnewstribune%2Fbinary%2FSpirit%20Mountain_binary_6507669.jpg" style="width:100%; height:200px; border: 3px solid darkolivegreen;">').openPopup();
 
-        const northShoreRail = L.marker([46.7810, -92.1041]).addTo(map);
+        const northShoreRail = L.marker([46.7810, -92.1041], {icon: trainIcon}).addTo(map);
         northShoreRail.bindPopup('<b>North Shore Scenic Railway</b><br>Seasonal narrated train tours follow a historic transport corridor for short, long & themed rides.Seasonal narrated train tours follow a historic transport corridor for short, long & themed rides.<br><br><img src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrF9YgJlsPcKxsfZWYsMD5xkLCz6Fq5UBYmQ&s" style="width:100%; height:200px; border: 3px solid darkolivegreen;">').openPopup();
 
-        const glensheen = L.marker([46.8286, -92.0360]).addTo(map);
+        const glensheen = L.marker([46.8286, -92.0360], {icon: mansionIcon}).addTo(map);
         glensheen.bindPopup('<b>Glensheen</b><br>Glensheen, the Historic Congdon Estate is a 20,000 square foot mansion in Duluth, Minnesota, United States, operated by the University of Minnesota Duluth as a historic house museum.<br><br><img src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyiwkbFPMOZLx5qc-kdYxxhlMk87NfLOB-tw&s" style="width:100%; height:200px; border: 3px solid darkolivegreen;">').openPopup();
 
-        const greatLakesAquarium = L.marker([46.7789, -92.1000]).addTo(map);
+        const greatLakesAquarium = L.marker([46.7789, -92.1000], {icon: fishIcon}).addTo(map);
         greatLakesAquarium.bindPopup('<b>Great Lakes Aquarium</b><br>The Great Lakes Aquarium opened in 2000 and is located on the Duluth waterfront. A 501 private nonprofit, its mission is to inspire people to explore their connection to Lake Superior and waters of the world.<br><br><img src= "https://mommybunch.com/wp-content/uploads/2016/07/great-lakes-aquarium-tank.jpg" style="width:100%; height:200px; border: 3px solid darkolivegreen;">').openPopup();
 
-        const jayCookeSP = L.marker([46.6548, -92.3718]).addTo(map);
+        const jayCookeSP = L.marker([46.6548, -92.3718], {icon: jayCookeIcon}).addTo(map);
         jayCookeSP.bindPopup('<b>Jay Cooke State Park</b><br>Jay Cooke State Park is a state park of Minnesota, United States, protecting the lower reaches of the St. Louis River. The park is located about 10 miles southwest of Duluth and is one of the ten most visited state parks in Minnesota. The western half of the park contains part of a rocky, 13-mile gorge.<br><br><img src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoSGfGdXHbs9dmfTj9yep7QN_gh_Yc9DNmAg&s" style="width:100%; height:200px; border: 3px solid darkolivegreen;">').openPopup();
 
-        const lesterPark = L.marker([46.837, -92.019]).addTo(map);
+        const lesterPark = L.marker([46.837, -92.019], {icon: lesterIcon}).addTo(map);
         lesterPark.bindPopup('<b>Lester Park</b><br>A great place to drive through the trees and go hiking. The drive from central Duluth to Lester Park also offers a great introduction of what the northern side of town has to offer!<br><br><img src="https://lakesuperiorcircletour.info/wp-content/uploads/2020/11/Amity-Creek-Duluth.jpg" style="width:100%; height:200px; border: 3px solid darkolivegreen;">').openPopup();
 
-        const chesterPark = L.marker([46.8138, -92.0927]).addTo(map);
+        const chesterPark = L.marker([46.8138, -92.0927], {icon: chesterIcon}).addTo(map);
         chesterPark.bindPopup('<b>Chester Park</b><br>Chester Park is a great place to run or go for a family hike! The location close to both the UMD and Scolastica campus also gives one a tour of Duluths acedemic communities.<br><br><img src= "https://greatruns.com/wp-content/uploads/2019/10/flowing-chester-from-bridge-1024x768.jpg" style="width:100%; height:200px; border: 3px solid darkolivegreen;">').openPopup();
 
-        const engerPark = L.marker([46.7761, -92.1249]).addTo(map);
+        const engerPark = L.marker([46.7761, -92.1249], {icon: towerIcon}).addTo(map);
         engerPark.bindPopup('<b>Enger Park</b><br>Enger Park is located at the top of the hill. Featuring a large tower, it is a great location for sceinic views and photoshoots!<br><br><img src= "https://completewedo.com/duluth/wp-content/uploads/sites/145/2024/08/Enger-Tower.jpg" style="width:100%; height:200px; border: 3px solid darkolivegreen;">').openPopup();
 
 
