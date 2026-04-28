@@ -1,0 +1,29 @@
+<!--I really hope this goes well...pray for me :( -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Duluth Attractions</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome to Duluth!</h1>
+        <h2>Here is a list of fun things to do while you are visiting for the WDF conference!</h2>
+    </div>
+
+
+
+
+
+
+</body>
+
+    
