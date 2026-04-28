@@ -22,9 +22,11 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Most Basic Web Map</title>
     
     <!-- Leaflet CSS stylesheet -->
@@ -55,6 +57,7 @@
         <h1>My most often traveled paths</h1>
         <h3>by: Julian Remmes</h3>
         <p>These are the places in Duluth where I enjoy spending most of my time</p>
+
     </div>
     <div id="map" style="width: 1200px; height: 500px;"></div>
 
@@ -63,8 +66,8 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     
     <script>
-        // Initialize the map, center it on 2nd and 21st
-        const map = L.map('map').setView([46.7758, -92.1197], 11);
+        // Initialize the map, center it on Duluth
+        const map = L.map('map').setView([46.7845, -92.1055], 11);
 
         // Add Esri Satellite tiles
         const tiles = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
@@ -82,7 +85,8 @@
         DTA.bindPopup("<b>Duluth Transit Authority</b><br>An easy way to get downtown!").openPopup();
 
         const myHouse = L.marker([46.8184, -92.115822]).addTo(map);
-        myHouse.bindPopup("<b>My house</b><br>so cozy!").openPopup();
-    </script>
-</body>
+        myHouse.bindPopup('<b>My house!</b><br> This is fishy<img src= "./images/IMG_8746.jpeg" style="width:100%; height:auto;">').openPopup();
+        </script>
+
+        </body>
 </html>
