@@ -556,7 +556,7 @@
       }
 
       function geojsonOnEachFeature(feature, layer) {
-                layer.bindPopup("<layer.feature.properties.ELEM_NAME + layer.feature.properties.MIDD_NAME + layer.feature.properties.HIGH_NAME)
+                layer.bindPopup('<b> Elementary school: ' + layer.feature.properties.ELEM_NAME +'<br>'+ '<b> Middle school: ' + layer.feature.properties.MIDD_NAME +'<br>'+ '<b> High school: ' +layer.feature.properties.HIGH_NAME)
                 ;
             }
 
