@@ -46,57 +46,541 @@
     AI use: you can use AI as much as you like, but make sure to understand and verify the code it generates.
     I expect every block of code to have a comment above it describing what it does and how it works. 
 -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Most Basic Web Map</title>
-    
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    
-    <style>
-        #map{
-            margin-left: auto;
-            margin-right: auto;
-            height: 600px;
-            width: 600px;
-        }
 
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <style>
+      #map {
+        margin-left: auto;
+        margin-right: auto;
+        height: 600px;
+        width: 600px;
+      }
     </style>
-</head>
-<body>
-    <div id="map" style="width: 1200px; height: 700px;"></div>
-    
+  </head>
+  <body>
+    <div id="map" style="width: 1200px; height: 700px"></div>
+
     <!-- Leaflet JavaScript -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    
+
     <script>
-        // Initialize the map, center it on UMD campus, and set the zoom level
-        const map = L.map('map').setView([46.82, -92.08], 13);
+      // Initialize the map, center it on UMD campus, and set the zoom level
+      const map = L.map("map").setView([46.82, -92.08], 13);
 
-        // Add OpenStreetMap tiles
-        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
+      // Add OpenStreetMap tiles
+      const tiles = L.tileLayer(
+        "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+          maxZoom: 19,
+          attribution:
+            '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        },
+      ).addTo(map);
 
-        var geojson = {"type":"FeatureCollection", "features": [
-        {"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[-92.078,46.798],[-92.037,46.821],[-92.054,46.838],[-92.051,46.841],[-92.069,46.842],[-92.075,46.837],[-92.071,46.827],[-92.078,46.815],[-92.091,46.815],[-92.088,46.805],[-92.078,46.798]]]},"properties":{"SDORGID":10709000000,"SDTYPE":"01","SDNUMBER":"0709","SDPREFNAME":"Duluth Public School District","ELEM_NAME":"CONGDON","ELEM_MULTI":"N","MIDD_NAME":"ORDEAN EAST","MIDD_MULTI":"N","HIGH_NAME":"EAST","HIGH_MULTI":"N","Shape_Leng":15324.2186986,"Shape_Area":9771636.76116}},
-        {"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[-92.175,46.837],[-92.153,46.837],[-92.109,46.829],[-92.075,46.837],[-92.069,46.842],[-92.077,46.859],[-92.048,46.873],[-92.054,46.877],[-92.048,46.88],[-92.093,46.938],[-92.075,46.949],[-92.075,46.968],[-92.09,46.982],[-92.026,47.066],[-92.042,47.198],[-92.175,47.198],[-92.175,46.895],[-92.154,46.895],[-92.154,46.891],[-92.159,46.891],[-92.154,46.876],[-92.159,46.876],[-92.161,46.862],[-92.175,46.866],[-92.176,46.851],[-92.196,46.851],[-92.196,46.862],[-92.212,46.862],[-92.201,46.851],[-92.206,46.851],[-92.212,46.837],[-92.196,46.837],[-92.196,46.831],[-92.189,46.83],[-92.185,46.837],[-92.175,46.837]],[[-92.153,46.856],[-92.153,46.851],[-92.164,46.851],[-92.164,46.858],[-92.153,46.86],[-92.153,46.856]]]},"properties":{"SDORGID":10709000000,"SDTYPE":"01","SDNUMBER":"0709","SDPREFNAME":"Duluth Public School District","ELEM_NAME":"HOMECROFT","ELEM_MULTI":"N","MIDD_NAME":"ORDEAN EAST","MIDD_MULTI":"N","HIGH_NAME":"EAST","HIGH_MULTI":"N","Shape_Leng":124676.654312,"Shape_Area":369218661.49}},
-        {"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[-92.054,46.838],[-92.044,46.841],[-92.017,46.866],[-91.963,46.864],[-91.961,46.917],[-91.921,46.917],[-91.92,47.199],[-92.042,47.198],[-92.026,47.066],[-92.09,46.982],[-92.075,46.968],[-92.075,46.949],[-92.093,46.938],[-92.048,46.88],[-92.054,46.877],[-92.048,46.873],[-92.077,46.859],[-92.069,46.842],[-92.051,46.841],[-92.054,46.838]]]},"properties":{"SDORGID":10709000000,"SDTYPE":"01","SDNUMBER":"0709","SDPREFNAME":"Duluth Public School District","ELEM_NAME":"LAKEWOOD","ELEM_MULTI":"N","MIDD_NAME":"ORDEAN EAST","MIDD_MULTI":"N","HIGH_NAME":"EAST","HIGH_MULTI":"N","Shape_Leng":104547.864101,"Shape_Area":363132005.899}},
-        {"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[-92.037,46.821],[-91.921,46.881],[-91.921,46.917],[-91.961,46.917],[-91.963,46.864],[-92.017,46.866],[-92.044,46.841],[-92.054,46.838],[-92.037,46.821]]]},"properties":{"SDORGID":10709000000,"SDTYPE":"01","SDNUMBER":"0709","SDPREFNAME":"Duluth Public School District","ELEM_NAME":"LESTER PARK","ELEM_MULTI":"N","MIDD_NAME":"ORDEAN EAST","MIDD_MULTI":"N","HIGH_NAME":"EAST","HIGH_MULTI":"N","Shape_Leng":35738.7071282,"Shape_Area":31352569.7578}},
-        {"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[-92.109,46.829],[-92.153,46.837],[-92.175,46.837],[-92.175,46.815],[-92.154,46.804],[-92.155,46.79],[-92.139,46.783],[-92.136,46.787],[-92.123,46.786],[-92.119,46.781],[-92.114,46.805],[-92.117,46.812],[-92.1,46.815],[-92.109,46.829]]]},"properties":{"SDORGID":10709000000,"SDTYPE":"01","SDNUMBER":"0709","SDPREFNAME":"Duluth Public School District","ELEM_NAME":"LOWELL","ELEM_MULTI":"N","MIDD_NAME":"LINCOLN PARK","MIDD_MULTI":"N","HIGH_NAME":"DENFELD","HIGH_MULTI":"N","Shape_Leng":21633.9613669,"Shape_Area":22565557.2259}},
-        {"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[-92.091,46.815],[-92.078,46.815],[-92.071,46.827],[-92.075,46.837],[-92.109,46.829],[-92.1,46.815],[-92.091,46.815]]]},"properties":{"SDORGID":10709000000,"SDTYPE":"01","SDNUMBER":"0709","SDPREFNAME":"Duluth Public School District","ELEM_NAME":"LOWELL","ELEM_MULTI":"N","MIDD_NAME":"ORDEAN EAST","MIDD_MULTI":"N","HIGH_NAME":"EAST","HIGH_MULTI":"N","Shape_Leng":8947.49191248,"Shape_Area":5043447.98566}},
-        {"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[-92.2,46.733],[-92.169,46.72],[-92.147,46.716],[-92.141,46.725],[-92.143,46.735],[-92.125,46.745],[-92.143,46.757],[-92.155,46.761],[-92.163,46.758],[-92.175,46.764],[-92.185,46.764],[-92.185,46.744],[-92.2,46.733]]]},"properties":{"SDORGID":10709000000,"SDTYPE":"01","SDNUMBER":"0709","SDPREFNAME":"Duluth Public School District","ELEM_NAME":"LAURA MACARTHUR","ELEM_MULTI":"N","MIDD_NAME":"LINCOLN PARK","MIDD_MULTI":"N","HIGH_NAME":"DENFELD","HIGH_MULTI":"N","Shape_Leng":18195.6560782,"Shape_Area":17469107.0902}},
-        {"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[-92.09,46.792],[-92.101,46.799],[-92.106,46.796],[-92.1,46.815],[-92.117,46.812],[-92.114,46.805],[-92.119,46.781],[-92.123,46.786],[-92.136,46.787],[-92.09,46.75],[-92.035,46.709],[-92.021,46.704],[-92.016,46.707],[-92.046,46.727],[-92.075,46.757],[-92.092,46.778],[-92.094,46.788],[-92.09,46.792]]]},"properties":{"SDORGID":10709000000,"SDTYPE":"01","SDNUMBER":"0709","SDPREFNAME":"Duluth Public School District","ELEM_NAME":"MYERS-WILKINS","ELEM_MULTI":"N","MIDD_NAME":"LINCOLN PARK","MIDD_MULTI":"N","HIGH_NAME":"DENFELD","HIGH_MULTI":"N","Shape_Leng":35611.1969724,"Shape_Area":18356748.5457}},
-        {"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[-92.09,46.792],[-92.078,46.798],[-92.088,46.805],[-92.091,46.815],[-92.1,46.815],[-92.106,46.796],[-92.101,46.799],[-92.09,46.792]]]},"properties":{"SDORGID":10709000000,"SDTYPE":"01","SDNUMBER":"0709","SDPREFNAME":"Duluth Public School District","ELEM_NAME":"MYERS-WILKINS","ELEM_MULTI":"N","MIDD_NAME":"ORDEAN EAST","MIDD_MULTI":"N","HIGH_NAME":"EAST","HIGH_MULTI":"N","Shape_Leng":8142.75111712,"Shape_Area":2738142.65708}},
-        {"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[-92.136,46.787],[-92.139,46.783],[-92.155,46.79],[-92.154,46.804],[-92.175,46.815],[-92.175,46.764],[-92.163,46.758],[-92.155,46.761],[-92.143,46.757],[-92.125,46.745],[-92.116,46.749],[-92.09,46.75],[-92.136,46.787]]]},"properties":{"SDORGID":10709000000,"SDTYPE":"01","SDNUMBER":"0709","SDPREFNAME":"Duluth Public School District","ELEM_NAME":"PIEDMONT","ELEM_MULTI":"N","MIDD_NAME":"LINCOLN PARK","MIDD_MULTI":"N","HIGH_NAME":"DENFELD","HIGH_MULTI":"N","Shape_Leng":24460.2992751,"Shape_Area":20521747.5032}},
-        {"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[-92.2,46.733],[-92.217,46.721],[-92.238,46.721],[-92.238,46.677],[-92.301,46.677],[-92.301,46.667],[-92.293,46.664],[-92.289,46.668],[-92.286,46.66],[-92.275,46.658],[-92.27,46.651],[-92.257,46.659],[-92.243,46.649],[-92.229,46.653],[-92.216,46.65],[-92.207,46.652],[-92.202,46.657],[-92.204,46.667],[-92.176,46.686],[-92.183,46.695],[-92.203,46.697],[-92.206,46.703],[-92.189,46.718],[-92.169,46.72],[-92.2,46.733]]]},"properties":{"SDORGID":10709000000,"SDTYPE":"01","SDNUMBER":"0709","SDPREFNAME":"Duluth Public School District","ELEM_NAME":"STOWE","ELEM_MULTI":"N","MIDD_NAME":"LINCOLN PARK","MIDD_MULTI":"N","HIGH_NAME":"DENFELD","HIGH_MULTI":"N","Shape_Leng":40085.3177323,"Shape_Area":39347841.8999}}
-        ]}
+      var geojson = {
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [-92.078, 46.798],
+                  [-92.037, 46.821],
+                  [-92.054, 46.838],
+                  [-92.051, 46.841],
+                  [-92.069, 46.842],
+                  [-92.075, 46.837],
+                  [-92.071, 46.827],
+                  [-92.078, 46.815],
+                  [-92.091, 46.815],
+                  [-92.088, 46.805],
+                  [-92.078, 46.798],
+                ],
+              ],
+            },
+            properties: {
+              SDORGID: 10709000000,
+              SDTYPE: "01",
+              SDNUMBER: "0709",
+              SDPREFNAME: "Duluth Public School District",
+              ELEM_NAME: "CONGDON",
+              ELEM_MULTI: "N",
+              MIDD_NAME: "ORDEAN EAST",
+              MIDD_MULTI: "N",
+              HIGH_NAME: "EAST",
+              HIGH_MULTI: "N",
+              Shape_Leng: 15324.2186986,
+              Shape_Area: 9771636.76116,
+            },
+          },
+          {
+            type: "Feature",
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [-92.175, 46.837],
+                  [-92.153, 46.837],
+                  [-92.109, 46.829],
+                  [-92.075, 46.837],
+                  [-92.069, 46.842],
+                  [-92.077, 46.859],
+                  [-92.048, 46.873],
+                  [-92.054, 46.877],
+                  [-92.048, 46.88],
+                  [-92.093, 46.938],
+                  [-92.075, 46.949],
+                  [-92.075, 46.968],
+                  [-92.09, 46.982],
+                  [-92.026, 47.066],
+                  [-92.042, 47.198],
+                  [-92.175, 47.198],
+                  [-92.175, 46.895],
+                  [-92.154, 46.895],
+                  [-92.154, 46.891],
+                  [-92.159, 46.891],
+                  [-92.154, 46.876],
+                  [-92.159, 46.876],
+                  [-92.161, 46.862],
+                  [-92.175, 46.866],
+                  [-92.176, 46.851],
+                  [-92.196, 46.851],
+                  [-92.196, 46.862],
+                  [-92.212, 46.862],
+                  [-92.201, 46.851],
+                  [-92.206, 46.851],
+                  [-92.212, 46.837],
+                  [-92.196, 46.837],
+                  [-92.196, 46.831],
+                  [-92.189, 46.83],
+                  [-92.185, 46.837],
+                  [-92.175, 46.837],
+                ],
+                [
+                  [-92.153, 46.856],
+                  [-92.153, 46.851],
+                  [-92.164, 46.851],
+                  [-92.164, 46.858],
+                  [-92.153, 46.86],
+                  [-92.153, 46.856],
+                ],
+              ],
+            },
+            properties: {
+              SDORGID: 10709000000,
+              SDTYPE: "01",
+              SDNUMBER: "0709",
+              SDPREFNAME: "Duluth Public School District",
+              ELEM_NAME: "HOMECROFT",
+              ELEM_MULTI: "N",
+              MIDD_NAME: "ORDEAN EAST",
+              MIDD_MULTI: "N",
+              HIGH_NAME: "EAST",
+              HIGH_MULTI: "N",
+              Shape_Leng: 124676.654312,
+              Shape_Area: 369218661.49,
+            },
+          },
+          {
+            type: "Feature",
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [-92.054, 46.838],
+                  [-92.044, 46.841],
+                  [-92.017, 46.866],
+                  [-91.963, 46.864],
+                  [-91.961, 46.917],
+                  [-91.921, 46.917],
+                  [-91.92, 47.199],
+                  [-92.042, 47.198],
+                  [-92.026, 47.066],
+                  [-92.09, 46.982],
+                  [-92.075, 46.968],
+                  [-92.075, 46.949],
+                  [-92.093, 46.938],
+                  [-92.048, 46.88],
+                  [-92.054, 46.877],
+                  [-92.048, 46.873],
+                  [-92.077, 46.859],
+                  [-92.069, 46.842],
+                  [-92.051, 46.841],
+                  [-92.054, 46.838],
+                ],
+              ],
+            },
+            properties: {
+              SDORGID: 10709000000,
+              SDTYPE: "01",
+              SDNUMBER: "0709",
+              SDPREFNAME: "Duluth Public School District",
+              ELEM_NAME: "LAKEWOOD",
+              ELEM_MULTI: "N",
+              MIDD_NAME: "ORDEAN EAST",
+              MIDD_MULTI: "N",
+              HIGH_NAME: "EAST",
+              HIGH_MULTI: "N",
+              Shape_Leng: 104547.864101,
+              Shape_Area: 363132005.899,
+            },
+          },
+          {
+            type: "Feature",
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [-92.037, 46.821],
+                  [-91.921, 46.881],
+                  [-91.921, 46.917],
+                  [-91.961, 46.917],
+                  [-91.963, 46.864],
+                  [-92.017, 46.866],
+                  [-92.044, 46.841],
+                  [-92.054, 46.838],
+                  [-92.037, 46.821],
+                ],
+              ],
+            },
+            properties: {
+              SDORGID: 10709000000,
+              SDTYPE: "01",
+              SDNUMBER: "0709",
+              SDPREFNAME: "Duluth Public School District",
+              ELEM_NAME: "LESTER PARK",
+              ELEM_MULTI: "N",
+              MIDD_NAME: "ORDEAN EAST",
+              MIDD_MULTI: "N",
+              HIGH_NAME: "EAST",
+              HIGH_MULTI: "N",
+              Shape_Leng: 35738.7071282,
+              Shape_Area: 31352569.7578,
+            },
+          },
+          {
+            type: "Feature",
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [-92.109, 46.829],
+                  [-92.153, 46.837],
+                  [-92.175, 46.837],
+                  [-92.175, 46.815],
+                  [-92.154, 46.804],
+                  [-92.155, 46.79],
+                  [-92.139, 46.783],
+                  [-92.136, 46.787],
+                  [-92.123, 46.786],
+                  [-92.119, 46.781],
+                  [-92.114, 46.805],
+                  [-92.117, 46.812],
+                  [-92.1, 46.815],
+                  [-92.109, 46.829],
+                ],
+              ],
+            },
+            properties: {
+              SDORGID: 10709000000,
+              SDTYPE: "01",
+              SDNUMBER: "0709",
+              SDPREFNAME: "Duluth Public School District",
+              ELEM_NAME: "LOWELL",
+              ELEM_MULTI: "N",
+              MIDD_NAME: "LINCOLN PARK",
+              MIDD_MULTI: "N",
+              HIGH_NAME: "DENFELD",
+              HIGH_MULTI: "N",
+              Shape_Leng: 21633.9613669,
+              Shape_Area: 22565557.2259,
+            },
+          },
+          {
+            type: "Feature",
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [-92.091, 46.815],
+                  [-92.078, 46.815],
+                  [-92.071, 46.827],
+                  [-92.075, 46.837],
+                  [-92.109, 46.829],
+                  [-92.1, 46.815],
+                  [-92.091, 46.815],
+                ],
+              ],
+            },
+            properties: {
+              SDORGID: 10709000000,
+              SDTYPE: "01",
+              SDNUMBER: "0709",
+              SDPREFNAME: "Duluth Public School District",
+              ELEM_NAME: "LOWELL",
+              ELEM_MULTI: "N",
+              MIDD_NAME: "ORDEAN EAST",
+              MIDD_MULTI: "N",
+              HIGH_NAME: "EAST",
+              HIGH_MULTI: "N",
+              Shape_Leng: 8947.49191248,
+              Shape_Area: 5043447.98566,
+            },
+          },
+          {
+            type: "Feature",
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [-92.2, 46.733],
+                  [-92.169, 46.72],
+                  [-92.147, 46.716],
+                  [-92.141, 46.725],
+                  [-92.143, 46.735],
+                  [-92.125, 46.745],
+                  [-92.143, 46.757],
+                  [-92.155, 46.761],
+                  [-92.163, 46.758],
+                  [-92.175, 46.764],
+                  [-92.185, 46.764],
+                  [-92.185, 46.744],
+                  [-92.2, 46.733],
+                ],
+              ],
+            },
+            properties: {
+              SDORGID: 10709000000,
+              SDTYPE: "01",
+              SDNUMBER: "0709",
+              SDPREFNAME: "Duluth Public School District",
+              ELEM_NAME: "LAURA MACARTHUR",
+              ELEM_MULTI: "N",
+              MIDD_NAME: "LINCOLN PARK",
+              MIDD_MULTI: "N",
+              HIGH_NAME: "DENFELD",
+              HIGH_MULTI: "N",
+              Shape_Leng: 18195.6560782,
+              Shape_Area: 17469107.0902,
+            },
+          },
+          {
+            type: "Feature",
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [-92.09, 46.792],
+                  [-92.101, 46.799],
+                  [-92.106, 46.796],
+                  [-92.1, 46.815],
+                  [-92.117, 46.812],
+                  [-92.114, 46.805],
+                  [-92.119, 46.781],
+                  [-92.123, 46.786],
+                  [-92.136, 46.787],
+                  [-92.09, 46.75],
+                  [-92.035, 46.709],
+                  [-92.021, 46.704],
+                  [-92.016, 46.707],
+                  [-92.046, 46.727],
+                  [-92.075, 46.757],
+                  [-92.092, 46.778],
+                  [-92.094, 46.788],
+                  [-92.09, 46.792],
+                ],
+              ],
+            },
+            properties: {
+              SDORGID: 10709000000,
+              SDTYPE: "01",
+              SDNUMBER: "0709",
+              SDPREFNAME: "Duluth Public School District",
+              ELEM_NAME: "MYERS-WILKINS",
+              ELEM_MULTI: "N",
+              MIDD_NAME: "LINCOLN PARK",
+              MIDD_MULTI: "N",
+              HIGH_NAME: "DENFELD",
+              HIGH_MULTI: "N",
+              Shape_Leng: 35611.1969724,
+              Shape_Area: 18356748.5457,
+            },
+          },
+          {
+            type: "Feature",
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [-92.09, 46.792],
+                  [-92.078, 46.798],
+                  [-92.088, 46.805],
+                  [-92.091, 46.815],
+                  [-92.1, 46.815],
+                  [-92.106, 46.796],
+                  [-92.101, 46.799],
+                  [-92.09, 46.792],
+                ],
+              ],
+            },
+            properties: {
+              SDORGID: 10709000000,
+              SDTYPE: "01",
+              SDNUMBER: "0709",
+              SDPREFNAME: "Duluth Public School District",
+              ELEM_NAME: "MYERS-WILKINS",
+              ELEM_MULTI: "N",
+              MIDD_NAME: "ORDEAN EAST",
+              MIDD_MULTI: "N",
+              HIGH_NAME: "EAST",
+              HIGH_MULTI: "N",
+              Shape_Leng: 8142.75111712,
+              Shape_Area: 2738142.65708,
+            },
+          },
+          {
+            type: "Feature",
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [-92.136, 46.787],
+                  [-92.139, 46.783],
+                  [-92.155, 46.79],
+                  [-92.154, 46.804],
+                  [-92.175, 46.815],
+                  [-92.175, 46.764],
+                  [-92.163, 46.758],
+                  [-92.155, 46.761],
+                  [-92.143, 46.757],
+                  [-92.125, 46.745],
+                  [-92.116, 46.749],
+                  [-92.09, 46.75],
+                  [-92.136, 46.787],
+                ],
+              ],
+            },
+            properties: {
+              SDORGID: 10709000000,
+              SDTYPE: "01",
+              SDNUMBER: "0709",
+              SDPREFNAME: "Duluth Public School District",
+              ELEM_NAME: "PIEDMONT",
+              ELEM_MULTI: "N",
+              MIDD_NAME: "LINCOLN PARK",
+              MIDD_MULTI: "N",
+              HIGH_NAME: "DENFELD",
+              HIGH_MULTI: "N",
+              Shape_Leng: 24460.2992751,
+              Shape_Area: 20521747.5032,
+            },
+          },
+          {
+            type: "Feature",
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [-92.2, 46.733],
+                  [-92.217, 46.721],
+                  [-92.238, 46.721],
+                  [-92.238, 46.677],
+                  [-92.301, 46.677],
+                  [-92.301, 46.667],
+                  [-92.293, 46.664],
+                  [-92.289, 46.668],
+                  [-92.286, 46.66],
+                  [-92.275, 46.658],
+                  [-92.27, 46.651],
+                  [-92.257, 46.659],
+                  [-92.243, 46.649],
+                  [-92.229, 46.653],
+                  [-92.216, 46.65],
+                  [-92.207, 46.652],
+                  [-92.202, 46.657],
+                  [-92.204, 46.667],
+                  [-92.176, 46.686],
+                  [-92.183, 46.695],
+                  [-92.203, 46.697],
+                  [-92.206, 46.703],
+                  [-92.189, 46.718],
+                  [-92.169, 46.72],
+                  [-92.2, 46.733],
+                ],
+              ],
+            },
+            properties: {
+              SDORGID: 10709000000,
+              SDTYPE: "01",
+              SDNUMBER: "0709",
+              SDPREFNAME: "Duluth Public School District",
+              ELEM_NAME: "STOWE",
+              ELEM_MULTI: "N",
+              MIDD_NAME: "LINCOLN PARK",
+              MIDD_MULTI: "N",
+              HIGH_NAME: "DENFELD",
+              HIGH_MULTI: "N",
+              Shape_Leng: 40085.3177323,
+              Shape_Area: 39347841.8999,
+            },
+          },
+        ],
+      };
 
-        L.geoJSON(geojson).addTo(map)
+      // geojson style function
+      function geojsonStyle(feature) {
+        return {
+          color: "black",
+          weight: 1,
+          // Source - https://stackoverflow.com/a/5365036
+          fillColor:
+            // Posted by ZPiDER, modified by community. See post 'Timeline' for change history
+            // Retrieved 2026-04-30, License - CC BY-SA 4.0
+
+            "#" + (((1 << 24) * Math.random()) | 0).toString(16).padStart(6, "0"),
+          fillOpacity: 0.7,
+        };
+      }
+
+      function geojsonOnEachFeature(feature, layer) {
+                layer.bindPopup("<layer.feature.properties.ELEM_NAME + layer.feature.properties.MIDD_NAME + layer.feature.properties.HIGH_NAME)
+                ;
+            }
+
+      L.geoJSON(geojson, {
+        style: geojsonStyle,
+        onEachFeature: geojsonOnEachFeature,
+      }).addTo(map);
+
+      // layer.bindPopup("<b> Elementary Name: <br>" layer.feature.properties.ELEM_NAME).addTo(map)
+
+      //  L.geoJSON(geojson).bindPopup("Elementary Name:"+ features.properties.ELEM_NAME).addTo(map)
     </script>
-</body>
+  </body>
 </html>
+
+<!--
+unused code
+
+layer.feature.properties.MIDD_NAME, layer.feature.properties.HIGH_NAME
+   L.geoJSON(geojson).addTo(map)
+        function (geoJsonFeature) {
+            return geoJSON(geojson).bindpop
+    return {}
+}
+.bindPopup(function(layer){return layer.feature.properties.ELEM_NAME})
+
+-->
