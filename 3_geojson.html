@@ -60,33 +60,50 @@
     />
 
     <style>
+      .body{
+        background-color: cornsilk;
+      }
+      .header {
+        text-align:center;
+      }
       #map {
         margin-left: auto;
         margin-right: auto;
         height: 600px;
         width: 600px;
+        border: 4px solid black;
       }
     </style>
   </head>
   <body>
-    <div id="map" style="width: 1200px; height: 700px"></div>
+    <div class= "header">
+
+      <h1>School Attendance Areas in St. Louis County</h1>
+      <h3>Click to see which schools are attended in each area</h3>
+
+
+
+    </div>
+    <div id="map" style="width: 1100px; height: 600px"></div>
 
     <!-- Leaflet JavaScript -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script>
       // Initialize the map, center it on UMD campus, and set the zoom level
-      const map = L.map("map").setView([46.82, -92.08], 13);
+      const map = L.map("map").setView([46.82, -92.08], 10);
 
       // Add OpenStreetMap tiles
       const tiles = L.tileLayer(
-        "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+        'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
         {
           maxZoom: 19,
           attribution:
-            '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
         },
       ).addTo(map);
+
+      //adding geojson
 
       var geojson = {
         type: "FeatureCollection",
@@ -549,11 +566,14 @@
           fillColor:
             // Posted by ZPiDER, modified by community. See post 'Timeline' for change history
             // Retrieved 2026-04-30, License - CC BY-SA 4.0
+            //generating random color
 
             "#" + (((1 << 24) * Math.random()) | 0).toString(16).padStart(6, "0"),
           fillOpacity: 0.7,
         };
       }
+
+      //adding popups
 
       function geojsonOnEachFeature(feature, layer) {
                 layer.bindPopup('<b> Elementary school: ' + layer.feature.properties.ELEM_NAME +'<br>'+ '<b> Middle school: ' + layer.feature.properties.MIDD_NAME +'<br>'+ '<b> High school: ' +layer.feature.properties.HIGH_NAME)
@@ -565,16 +585,18 @@
         onEachFeature: geojsonOnEachFeature,
       }).addTo(map);
 
-      // layer.bindPopup("<b> Elementary Name: <br>" layer.feature.properties.ELEM_NAME).addTo(map)
-
-      //  L.geoJSON(geojson).bindPopup("Elementary Name:"+ features.properties.ELEM_NAME).addTo(map)
+     
     </script>
   </body>
 </html>
 
 <!--
+
 unused code
 
+ // layer.bindPopup("<b> Elementary Name: <br>" layer.feature.properties.ELEM_NAME).addTo(map)
+
+      //  L.geoJSON(geojson).bindPopup("Elementary Name:"+ features.properties.ELEM_NAME).addTo(map)
 layer.feature.properties.MIDD_NAME, layer.feature.properties.HIGH_NAME
    L.geoJSON(geojson).addTo(map)
         function (geoJsonFeature) {
